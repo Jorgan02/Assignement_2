@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dashboard Control Center</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <h1>🌍 Dashboard Control Center</h1>
+
+  <!-- 1. Register Dashboard Configuration -->
+  <div class="section">
+    <label for="dashboardRegisterInput">Register Dashboard Configuration:</label><br />
+    <input id="dashboardRegisterInput" placeholder="Enter Country ISO or Name (e.g. 'NO' for Norway)" />
+    <button onclick="registerDashboard()">Register</button>
+    <div id="registerDashboardResult"></div>
+  </div>
+
+  <!-- 2. View Populated Dashboard -->
+  <div class="section">
+    <label for="populatedDashboardInput">View Populated Dashboard by ID:</label><br />
+    <input id="populatedDashboardInput" placeholder="Enter configuration ID (e.g. 516dba7f015f2a68)" />
+    <button onclick="getPopulatedDashboard()">Fetch Populated Dashboard</button>
+    <pre id="populatedDashboardResult"></pre>
+  </div>
+
+  <!-- 3. View Dashboard Configuration by ID -->
+  <div class="section">
+    <label for="dashboardConfigViewInput">View Dashboard Configuration by ID:</label><br />
+    <input id="dashboardConfigViewInput" placeholder="Enter configuration ID" />
+    <button onclick="getDashboardConfig()">Fetch Configuration</button>
+    <pre id="dashboardConfigResult"></pre>
+  </div>
+
+  <!-- 4. View All Dashboard Configurations -->
+  <div class="section">
+    <label>View All Dashboard Configurations:</label><br />
+    <button onclick="listDashboardConfigs()">Load All Configurations</button>
+    <pre id="dashboardConfigsList"></pre>
+  </div>
+
+  <!-- 5. Edit Dashboard Configuration by ID -->
+  <div class="section">
+    <label for="dashboardEditInput">Edit Dashboard Configuration by ID:</label><br />
+    <input id="dashboardEditInput" placeholder="Enter configuration ID to edit" /><br />
+
+    <!-- Inputs for optional top-level fields -->
+    <input id="dashboardEditCountry" placeholder="Country (e.g., 'Norway' or 'United States')" /><br />
+    <input id="dashboardEditISO" placeholder="ISO code (e.g. 'NO')" /><br />
+    <input id="dashboardEditCurrency" placeholder="Currency code (e.g. 'NOK', 'USD')" /><br />
+
+    <!-- Boolean features inputs as checkboxes -->
+    <label>
+      <input type="checkbox" id="temperatureCheckbox" /> Temperature
+    </label><br />
+    <label>
+      <input type="checkbox" id="precipitationCheckbox" /> Precipitation
+    </label><br />
+    <label>
+      <input type="checkbox" id="capitalCheckbox" /> Capital
+    </label><br />
+    <label>
+      <input type="checkbox" id="coordinatesCheckbox" /> Coordinates
+    </label><br />
+    <label>
+      <input type="checkbox" id="populationCheckbox" /> Population
+    </label><br />
+    <label>
+      <input type="checkbox" id="areaCheckbox" /> Area
+    </label><br />
+    <input id="targetCurrenciesInput" placeholder='Target Currencies JSON e.g. ["USD","EUR"]' /><br />
+
+    <button onclick="editDashboardConfig()">Edit Configuration</button>
+    <div id="dashboardEditResult"></div>
+  </div>
+
+  <!-- 6. Delete Dashboard Configuration by ID -->
+  <div class="section">
+    <label for="dashboardDeleteInput">Delete Dashboard Configuration by ID:</label><br />
+    <input id="dashboardDeleteInput" placeholder="Enter configuration ID to delete" />
+    <button onclick="deleteDashboardConfig()">Delete Configuration</button>
+    <div id="dashboardDeleteResult"></div>
+  </div>
+
+  <!-- 7. Register a Webhook -->
+  <div class="section">
+    <label for="webhookRegisterInput">Register Webhook:</label><br />
+    <input id="webhookRegisterInput" placeholder="Enter Webhook URL" /><br />
+    <input id="webhookRegisterCountry" placeholder="Enter Country (optional, e.g. 'NO')" /><br />
+    <select id="webhookRegisterEvent">
+      <option value="REGISTER">REGISTER</option>
+      <option value="CHANGE">CHANGE</option>
+      <option value="DELETE">DELETE</option>
+      <option value="INVOKE">INVOKE</option>
+    </select>
+    <button onclick="registerWebhook()">Register Webhook</button>
+    <div id="webhookRegisterResult"></div>
+  </div>
+
+  <!-- 8. View a Webhook by ID -->
+  <div class="section">
+    <label for="webhookViewInput">View Webhook by ID:</label><br />
+    <input id="webhookViewInput" placeholder="Enter webhook ID" />
+    <button onclick="getWebhook()">Fetch Webhook</button>
+    <pre id="webhookViewResult"></pre>
+  </div>
+
+  <!-- 9. View All Webhooks -->
+  <div class="section">
+    <label>View All Webhooks:</label><br />
+    <button onclick="listWebhooks()">Load All Webhooks</button>
+    <pre id="webhookListResult"></pre>
+  </div>
+
+  <!-- 10. Delete a Webhook by ID -->
+  <div class="section">
+    <label for="webhookDeleteInput">Delete Webhook by ID:</label><br />
+    <input id="webhookDeleteInput" placeholder="Enter webhook ID to delete" />
+    <button onclick="deleteWebhook()">Delete Webhook</button>
+    <div id="webhookDeleteResult"></div>
+  </div>
+
+  <!-- 11. Check API & Service Status -->
+  <div class="section">
+    <label>API & Service Status:</label><br />
+    <button onclick="checkStatus()">Check Status</button>
+    <pre id="statusOutput"></pre>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
